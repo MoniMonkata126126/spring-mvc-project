@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: demo
+  security:
+    oauth2:
+      resourceserver:
+            jwt:
+              issuer-uri: http://localhost:7080/realms/dev
+              jwk-set-uri: http://localhost:7080/realms/dev/protocol/openid-connect/certs
+      client:
+        registration:
+                  keycloak:
+                    client-id: my-mvc-client
+                    client-secret: dveFjBVoRaWbri3Yyxi6bfVilwsHwlZL
+                    scope: openid,profile,email
+                    authorization-grant-type: authorization_code
+                    redirect-uri: "http://localhost:8080/login/oauth2/code/keycloak"
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:7080/realms/MyAppRealm
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          oauth2: DEBUG
+        web: DEBUG
+
+
+
+
